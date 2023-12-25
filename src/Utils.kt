@@ -29,6 +29,21 @@ fun readInputAsInts(name: String) = File("src", "$name.txt")
     .map{it.toInt()}
 
 /**
+ * Reads input as a grid and adds a border with the given 'empty' character.
+ */
+fun readInputAsGridWithEmptyBorder(name: String, emptyCharacter: Char): List<String> {
+    val input = readInputAsStrings(name)
+    val emptyRow = emptyCharacter.toString().repeat(input.first().length)
+    val borderedInput = mutableListOf(emptyRow)
+    for (line in input) {
+        val borderedLine = "$emptyCharacter$line$emptyCharacter"
+        borderedInput.add(borderedLine)
+    }
+    borderedInput.add(emptyRow)
+    return borderedInput
+}
+
+/**
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)

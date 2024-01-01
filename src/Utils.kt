@@ -47,3 +47,12 @@ fun readInputAsGridWithEmptyBorder(name: String, emptyCharacter: Char): List<Str
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+/**
+ * The cleaner shorthand for splitting strings and filtering non-empty values.
+ */
+fun CharSequence.splitIgnoreEmpty(vararg delimiters: String): List<String> {
+    return this.split(*delimiters).filter {
+        it.isNotEmpty()
+    }
+}

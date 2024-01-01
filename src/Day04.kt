@@ -9,12 +9,10 @@ fun main() {
         for (line in input) {
             val winningNumbers = line.substringAfter(":")
                 .substringBefore("|")
-                .split(" ")
-                .filter{ it.isNotBlank() }
+                .splitIgnoreEmpty(" ")
                 .map{it.toInt()}
             val ownNumbers = line.substringAfter("|")
-                .split(" ")
-                .filter{ it.isNotBlank() }
+                .splitIgnoreEmpty(" ")
                 .map{it.toInt()}
             scratchcards.add(Scratchcard(winningNumbers.toSet(), ownNumbers.toSet()))
         }
